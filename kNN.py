@@ -19,3 +19,18 @@ def classfy0(inX,dataSet,labels,k):
 	sortedClassCount = sorted(classCount.iteritems(),
 		key = operator.itemgetter(1),reverse = True)
 	return sortedClassCount[0][0]
+
+def fileToMatrix(filename):
+	fr = open(filename)
+	arrayOLines = fr.readlines()
+	num = len(arrayOLines)
+	matReturn = zeros((num,4))
+
+	index =0
+	for line in arrayOLines:
+		line = line.strip()
+		listFormLine = line.split('\t')
+		matReturn[index,:] = listFormLine[0:4]
+		index = index+1
+	return mat(matReturn)
+
